@@ -1,6 +1,8 @@
 import express from 'express';
 import products from '../arrays/products.js';
 import dayjs from 'dayjs';
+import url from 'url';
+import path from 'path';
 
 function generateRandomCode(length = 16) {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -24,10 +26,17 @@ function calculateDeliveryDate(deliveryOptionId) {
   };
 };
 
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const route = express.Router();
 
 route.get('/products', (req, res, next) => {
   res.json(products);
+});
+
+route.get('/documentations', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../documentations/clickmart-doc.html'));
 });
 
 route.post('/orders', (req, res, next) => {
@@ -120,7 +129,7 @@ route.post('/orders', (req, res, next) => {
     });
   });
 
-  res.json({
+  res.status(201).json({
     orderId: generateRandomCode(),
     orderTime: Math.round(dayjs() / 1000),
     totalCostCents: totalCostCents,
