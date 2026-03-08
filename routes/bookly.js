@@ -1,8 +1,13 @@
 import express from 'express';
 import properties from '../arrays/properties.js';
 import dayjs from 'dayjs';
+import path from 'path';
+import url from 'url';
 
 const route = express.Router();
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function generateRandomCode(length = 16) {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -20,7 +25,10 @@ route.get('/properties', (req, res, next) => {
   res.json(properties);
 });
 
-// https://68dae67223ebc87faa318cfc.mockapi.io/bookedProperties
+route.get('/documentations', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../documentations/bookly-doc.html'));
+});
+
 route.post('/book', (req, res, next) => {
   const bookedProperty = req.body;
   if (!bookedProperty.checkinDate || !bookedProperty.checkoutDate || !bookedProperty.guests || !bookedProperty.propertyId) {
