@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script type="module">
+import dayjs from 'https://cdn.jsdelivr.net/npm/dayjs@1.11.18/+esm';
+
+fetch(
+  'http://localhost:5000/bookly/book', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      checkinDate: dayjs().startOf('day').format(),
+      checkoutDate: dayjs().add(4, 'day').startOf('day').format(),
+      propertyId: 'c2a82c5e-aff4-435f-9975-517cfaba2ece',
+      guests: {
+        adults: 2,
+        children: 2
+      }
+    })
+  }
+).then((response) => {
+  return response.json();
+}).then((bookedProperty) => {
+  console.log(bookedProperty);
+});
+
+// 7ijqds7anc57vkd9
+</script>
+</body>
+</html>

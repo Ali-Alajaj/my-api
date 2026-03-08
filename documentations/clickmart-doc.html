@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation</title>
+
+  <link rel="stylesheet" href="./documentations-style/clickmart-api.css">
+</head>
+<body>
+  <div class="page-title" id="page-title">Clickmart API Documentation Page</div>
+  <div class="url">URL: http://localhost:5000</div>
+  <div class="requests">
+    Requests:
+    <a href="#products">GET /clickmart/products</a>
+    <a href="#orders">POST /clickmart/orders</a>
+  </div>
+
+  <div class="request-doc" id="products">
+    <p class="method get">Method: GET</p>
+    <p class="route">Route: /clickmart/products</p>
+    <p class="response-name">Response:</p>
+    <pre class="products-pre">
+[
+  {
+    "id": "1e23a456-789b-4cde-9123-456789abcdef",
+    "image": "images/products/black-tshirt.jpg",
+    "name": "Black T-shirt",
+    "rating": {"stars": 4.5, "count": 95},
+    "price": 16,
+    "keywords": ["tshirts", "shirts", "clothes", "clothing"],
+    "type": "clothing"
+  }, {
+    "id": "2a34b567-89cd-4def-9234-56789abcdef0",
+    "image": "images/products/blue-jeans.jpg",
+    "name": "Blue Jeans",
+    "rating": {"stars": 4, "count": 92},
+    "price": 40,
+    "keywords": ["jeans", "pants", "clothes"],
+    "type": "clothing"
+  }...(24)
+]</pre>
+  <a href="#page-title">Back to top</a>
+  </div>
+
+  <div class="request-doc" id="orders">
+    <p class="method post">Method: POST</p>
+    <p class="route">Route: /clickmart/orders</p>
+    <p class="request-name">Request:</p>
+    <pre class="products-pre">
+[{
+  "id": "1e23a456-789b-4cde-9123-456789abcdef",
+  "quantity": 2,
+  "deliveryOptionId": "1"
+}, {
+  "id": "1b23c456-7830-4f89-a123-89abcdef0123",
+  "quantity": 1,
+  "deliveryOptionId": "3"
+}]</pre>
+
+<p>Response:</p>
+<pre>
+{
+  "orderId": "7ijqds7anc57vkd9",
+  "orderTime": 1772959031,
+  "totalCostCents": 7369,
+  "products": [{
+    "id": "1e23a456-789b-4cde-9123-456789abcdef",
+    "quantity": 2,
+    "estimatedDeliveryDate": "2026-03-17T11:39:54+03:00"
+  }, {
+    "id": "1b23c456-7830-4f89-a123-89abcdef0123",
+    "quantity": 1,
+    "estimatedDeliveryDate": "2026-03-09T11:39:54+03:00"
+  }]
+}
+</pre>
+  <a href="#page-title">Back to top</a>
+  </div>
+</body>
+</html>

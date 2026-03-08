@@ -1,0 +1,73 @@
+body {
+  font-family: Arial;
+  color: white;
+  background-color: rgb(45, 45, 45);
+  padding-bottom: 280px;
+}
+
+.page-title {
+  font-size: 30px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.requests, .url {
+  text-align: center;
+  font-size: 22px;
+}
+
+.url {margin-bottom: 16px;}
+
+.requests a {
+  margin-left: 15px;
+  color: rgb(69, 146, 255);
+}
+
+.requests {margin-bottom: 120px;}
+
+.request-doc p {font-size: 19px}
+.request-doc {
+  padding-top: 30px;
+}
+
+pre {
+  border: 1.5px solid white;
+  font-size: 18px;
+  max-width: 700px;
+  overflow-x: auto;
+  padding: 14px;
+}
+
+.request-doc a {
+  color: rgb(69, 146, 255);
+  font-size: 20px;
+}
+
+.method {
+  border: 1px solid;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-right: 13px;
+}
+
+.request-doc .route {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.get {color: limegreen;}
+.post {color: yellow;}
+
+.response-name, .request-name {margin-top: 0;}
+
+@media (max-width: 672px) {
+  .requests {
+    display: flex;
+    flex-direction: column;
+  }
+  .requests a {margin-bottom: 15px;}
+
+  .page-title {font-size: 25px;}
+}
